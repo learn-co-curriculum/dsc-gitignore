@@ -1,1 +1,6 @@
-# dsc-gitignore
+# .gitignore
+
+
+```python
+
+```
