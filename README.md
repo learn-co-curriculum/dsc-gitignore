@@ -66,7 +66,7 @@ To start with, you put a hidden text file called `.gitignore` at the root of the
 !ls
 ```
 
-    CONTRIBUTING.md LICENSE.md      README.md       index.ipynb
+    CONTRIBUTING.md  index.ipynb  LICENSE.md  README.md
 
 
 
@@ -74,9 +74,8 @@ To start with, you put a hidden text file called `.gitignore` at the root of the
 !ls -a
 ```
 
-    [34m.[m[m                  .gitignore         LICENSE.md
-    [34m..[m[m                 [34m.ipynb_checkpoints[m[m README.md
-    [34m.git[m[m               CONTRIBUTING.md    index.ipynb
+    .   CONTRIBUTING.md  .gitignore   .ipynb_checkpoints  README.md
+    ..  .git	     index.ipynb  LICENSE.md
 
 
 ### Basic Syntax
