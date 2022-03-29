@@ -51,7 +51,7 @@ If you are working with collaborators, not only are these files _not useful_ to 
 
 <a title="© 2014 Andreas Kainz &amp; Uri Herrera &amp; Andrew Lake &amp; Marco Martin &amp; Harald Sitter &amp; Jonathan Riddell &amp; Ken Vermette &amp; Aleix Pol &amp; David Faure &amp; Albert Vaca &amp; Luca Beltrame &amp; Gleb Popov &amp; Nuno Pinheiro &amp; Alex Richardson &amp;  Jan Grulich &amp; Bernhard Landauer &amp; Heiko Becker &amp; Volker Krause &amp; David Rosca &amp; Phil Schaf / KDE" href="https://commons.wikimedia.org/wiki/File:Breezeicons-actions-22-project-development-close.svg"><img width="256" alt="Breezeicons-actions-22-project-development-close" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Breezeicons-actions-22-project-development-close.svg/256px-Breezeicons-actions-22-project-development-close.svg.png"></a>
 
-GitHub [limits the size](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github) of files that can be pushed to its repositories. If you try to push a file that exceeds the 50 MB threshold, you will get an error message and the push will fail.
+GitHub [limits the size](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github) of files that can be pushed to its repositories. If you try to push a file that exceeds the 100 MB threshold, you will get an error message and the push will fail.
 
 Often in a data science context, these large files are the data files themselves. Sometimes you will find that a compressed file (e.g. `.zip` file) is small enough to be pushed to GitHub, but the expanded version is too big. Then you can specify the expanded version in the `.gitignore` while still being able to share the compressed data on GitHub.
 
@@ -81,16 +81,19 @@ To start with, you put a hidden text file called `.gitignore` at the root of the
 
 ### Basic Syntax
 
-The file's content is just a list of things to ignore, as well as whitespace and comments (which start with `#`).
+The file's content is just a list of things to ignore, as well as whitespace and comments (which start with `#`). The items in the list are separated by newlines.
 
 For example, this could be the contents of a valid `.gitignore` file:
 
 ```
 # a comment
 secrets.json
+
+# another comment
+secrets.yml
 ```
 
-This means that if the repository contained a file called `secrets.json`, Git would ignore it.
+This means that if the repository contained a file called `secrets.json` and/or a file called `secrets.yml`, Git would ignore them.
 
 ### Glob Syntax
 
@@ -130,6 +133,8 @@ git rm --cached log.txt
 ```
 
 Note that this is a command you run in the terminal, _not_ a line to be added to the `.gitignore` file. For the changes to be reflected on GitHub, you will also need to run `git commit` and `git push`.
+
+> In general `git rm` is a useful command that deletes a file from the directory and stages that file deletion with Git (i.e. combines the `rm file_name` and `git add file_name` steps). Adding `--cached` to `git rm` means that Git will no longer track the file, but that the file will not actually be deleted from the directory.
 
 (You also probably want to add that file name to the `.gitignore` at the same time!)
 
